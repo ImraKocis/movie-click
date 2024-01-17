@@ -1,13 +1,13 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement } from 'react';
 import {
-  fontStyleToTailwindClass,
   ParagraphFontSize,
-  paragraphFontSizeToTailwindClass,
   ParagraphFontStyle,
   TypographyColors,
+  fontStyleToTailwindClass,
+  paragraphFontSizeToTailwindClass,
   typographyColorsToTailwindClass,
-} from "@/app/components/typography/utils/typographyGlobalPropertiesAndFunctions";
-import { twMerge } from "tailwind-merge";
+} from '@/app/components/typography/utils/typographyGlobalPropertiesAndFunctions';
+import { twMerge } from 'tailwind-merge';
 
 export interface ParagraphProps {
   text: string;
@@ -15,6 +15,8 @@ export interface ParagraphProps {
   style?: ParagraphFontStyle;
   size?: ParagraphFontSize;
   isAllCapital?: boolean;
+  changeColorOnHover?: boolean;
+  isPartOfCssGroup?: boolean;
 }
 
 export default function Paragraph({
@@ -23,13 +25,20 @@ export default function Paragraph({
   style,
   size,
   isAllCapital,
+  changeColorOnHover,
+  isPartOfCssGroup,
 }: ParagraphProps): ReactElement {
   return (
     <p
       className={twMerge(
-        typographyColorsToTailwindClass(color),
-        fontStyleToTailwindClass(style),
         paragraphFontSizeToTailwindClass(size),
+        fontStyleToTailwindClass(style),
+        typographyColorsToTailwindClass(color),
+        changeColorOnHover
+          ? isPartOfCssGroup
+            ? 'transition delay-150 hover:text-white group-hover:text-white'
+            : 'transition delay-150 hover:text-white'
+          : ''
       )}
     >
       {isAllCapital ? text.toUpperCase() : text}

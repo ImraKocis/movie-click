@@ -6,17 +6,31 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier -w ."
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ]
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.17.15",
+    "@tanstack/react-query-devtools": "^5.17.15",
     "next": "14.0.4",
     "prettier": "^3.2.2",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
+    "sharp": "^0.32.6",
     "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.17.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -24,6 +38,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }

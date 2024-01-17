@@ -1,5 +1,5 @@
-import React, { ReactElement } from "react";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
+import React, { ReactElement } from 'react';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 export interface FavoriteButtonProps {
   onClick: () => void;
@@ -13,12 +13,12 @@ export default function FavoriteButton({
   return (
     <button
       onClick={onClick}
-      className="flex p-2 justify-center items-center min-h-12 min-w-12"
+      className="flex min-h-12 min-w-12 items-center justify-center p-2"
     >
       {isFavorite ? (
-        <FaHeart className="w-full h-full" />
+        <FaHeart className="h-full w-full" />
       ) : (
-        <FaRegHeart className="w-full h-full" />
+        <FaRegHeart className="h-full w-full" />
       )}
     </button>
   );

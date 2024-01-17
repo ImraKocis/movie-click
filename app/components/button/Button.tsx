@@ -1,9 +1,9 @@
-import React, { ReactElement } from "react";
-import { twMerge } from "tailwind-merge";
+import React, { ReactElement } from 'react';
+import { twMerge } from 'tailwind-merge';
 import {
   ButtonProps,
   buttonStyleToTailwindClass,
-} from "@/app/components/button/utils/buttonGlobalPropertiesAndFunctions";
+} from '@/app/components/button/utils/buttonGlobalPropertiesAndFunctions';
 
 export default function Button({
   text,
@@ -16,8 +16,8 @@ export default function Button({
   return (
     <button
       className={twMerge(
-        "flex justify-center items-center px-8 py-6 gap-4",
-        buttonStyleToTailwindClass(style, isDisabled),
+        'flex items-center justify-center gap-4 px-8 py-6',
+        buttonStyleToTailwindClass(style, isDisabled)
       )}
       disabled={isDisabled}
       onClick={onClick}

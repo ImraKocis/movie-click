@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement } from 'react';
 
 export interface ButtonProps {
   text: string;
@@ -9,18 +9,18 @@ export interface ButtonProps {
   iconBefore?: ReactElement;
 }
 
-export type ButtonStyle = "primary" | "secondary";
+export type ButtonStyle = 'primary' | 'secondary';
 
 export const buttonStyleToTailwindClass = (
   style: ButtonStyle,
-  isDisabled?: boolean,
+  isDisabled?: boolean
 ): string => {
   if (isDisabled)
-    return "bg-gray-300 rounded-lg pointer-events-none text-gray-600";
+    return 'bg-gray-300 rounded-lg pointer-events-none text-gray-600';
   switch (style) {
-    case "primary":
-      return "bg-yellow-400 hover:bg-yellow-500 rounded-lg text-black transition delay-100";
-    case "secondary":
-      return "bg-gray-600 hover:bg-yellow-300 rounded-lg text-white hover:text-black transition delay-100";
+    case 'primary':
+      return 'bg-yellow-400 hover:bg-yellow-500 rounded-lg text-black transition delay-100';
+    case 'secondary':
+      return 'bg-gray-600 hover:bg-yellow-300 rounded-lg text-white hover:text-black transition delay-100';
   }
 };
