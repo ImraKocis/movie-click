@@ -3,7 +3,7 @@ import { Lato } from 'next/font/google';
 import './globals.css';
 import React from 'react';
 import Navbar from '@/app/components/navbar/Navbar';
-import QueryProvider from '@/app/util/QueryProvider';
+import Providers from '@/app/util/Providers';
 
 const lato = Lato({ weight: ['300', '400', '700', '900'], subsets: ['latin'] });
 
@@ -20,10 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={lato.className}>
-        <QueryProvider>
+        <Providers>
           <Navbar />
           {children}
-        </QueryProvider>
+        </Providers>
       </body>
     </html>
   );
