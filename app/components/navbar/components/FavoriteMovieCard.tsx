@@ -1,3 +1,4 @@
+'use client';
 import React, { ReactElement } from 'react';
 import Image from 'next/image';
 import Paragraph from '@/app/components/typography/Paragraph';
@@ -7,6 +8,7 @@ import {
   ImageUrlBuilder,
   posterSizes,
 } from '@/app/lib/tmdb/utils/images/imagesConfiguration';
+import FavoriteButton from '@/app/components/button/FavoriteButton';
 
 interface FavoriteMovieCardProps {
   id: number;
@@ -27,6 +29,7 @@ export default function FavoriteMovieCard({
     .setImageSize('small')
     .setImageUrl(posterUrl)
     .build();
+
   return (
     <Link
       href={{ pathname: `/movies/${title}`, query: { movieId: id } }}
@@ -36,11 +39,12 @@ export default function FavoriteMovieCard({
         <div className="flex h-24 w-16 items-center justify-center">
           <Image
             src={url}
-            className="h-auto w-auto rounded"
+            className="w-auto rounded"
             alt={`${title} favorite movie poster`}
             style={{ objectFit: 'cover' }}
             width={60}
             height={96}
+            priority={true}
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -53,7 +57,17 @@ export default function FavoriteMovieCard({
           <Paragraph text={year} size="small" color="gray" />
         </div>
       </div>
-      <div className="bg-amber-400 ">ss</div>
+      <div className="self-end">
+        <FavoriteButton
+          movie={{
+            id: id,
+            title: title,
+            posterUrl: posterUrl,
+            year: year,
+            score: score,
+          }}
+        />
+      </div>
     </Link>
   );
 }

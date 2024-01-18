@@ -8,7 +8,7 @@ import { getSearchResults } from '@/app/actions/search/actions';
 export default function Search(): ReactElement {
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>('');
-  const { data, error, isFetched } = useQuery({
+  const { data, error } = useQuery({
     queryKey: ['search', searchValue],
     queryFn: () => getSearchResults(searchValue),
     enabled: !!searchValue,
@@ -18,7 +18,7 @@ export default function Search(): ReactElement {
   };
   if (error) console.log(error.message);
   return (
-    <div className="max-w-navbar--desktop pointer-events-auto relative block w-full flex-col rounded-t bg-gray-800">
+    <div className="pointer-events-auto block w-full max-w-navbar--desktop flex-col rounded-t bg-gray-800 md:relative">
       <div className="flex w-full items-center px-6 py-1">
         <div className="flex h-8 w-8 items-center text-gray-400">
           <FaSearch />
@@ -33,9 +33,11 @@ export default function Search(): ReactElement {
           />
         </div>
       </div>
-      {isSearchActive ? (
-        <SearchResults movies={data} setIsSearchActive={setIsSearchActive} />
-      ) : null}
+      <div className="max-md:hidden max-md:group-hover/search:block">
+        {isSearchActive ? (
+          <SearchResults movies={data} setIsSearchActive={setIsSearchActive} />
+        ) : null}
+      </div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ export default function MoviesPage() {
       {/*<Heading text="test heading" level="h2" color="yellow" />*/}
       {/* eslint-disable-next-line react/jsx-no-undef */}
       {/*<Navbar />*/}
-      <div className="z-10 h-24 w-full bg-amber-400"></div>
+      <div className="z-10 h-24 w-full bg-gray-800"></div>
     </div>
   );
 }
