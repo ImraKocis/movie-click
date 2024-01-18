@@ -1,3 +1,4 @@
+'use client';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { LocalStorageFavorites } from '@/app/lib/localStorage/types';
@@ -7,15 +8,17 @@ export interface LocalStorageSlice {
   localStorage: LocalStorageFavorites[];
 }
 
-let moviesFromLocaleStorage;
-let storedMoviesInLocaleStorage;
-moviesFromLocaleStorage = localStorage.getItem('favoriteMoviesIds');
-storedMoviesInLocaleStorage = moviesFromLocaleStorage
-  ? JSON.parse(moviesFromLocaleStorage)
-  : [];
+// let moviesFromLocaleStorage;
+// let storedMoviesInLocaleStorage;
+// if () {
+//   moviesFromLocaleStorage = localStorage.getItem('favoriteMoviesIds');
+// }
+// storedMoviesInLocaleStorage = moviesFromLocaleStorage
+//   ? JSON.parse(moviesFromLocaleStorage)
+//   : [];
 
 const initialState: LocalStorageSlice = {
-  localStorage: storedMoviesInLocaleStorage,
+  localStorage: [],
 };
 
 export const localStorageSlice = createSlice({
@@ -24,7 +27,7 @@ export const localStorageSlice = createSlice({
   reducers: {
     set: (state, action: PayloadAction<LocalStorageFavorites[]>) => {
       state.localStorage = action.payload;
-      localStorage.setItem('favoriteMoviesIds', JSON.stringify(action.payload));
+      // localStorage.setItem('favoriteMoviesIds', JSON.stringify(action.payload));
     },
     addItem: (state, action: PayloadAction<LocalStorageFavorites>) => {
       state.localStorage.push(action.payload);

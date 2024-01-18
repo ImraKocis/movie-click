@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useRef } from 'react';
 import { Provider } from 'react-redux';
 import { makeStore, AppStore } from '@/app/lib/redux/store';
+import LocalStorageWrapper from '@/app/util/LocalStorageWrapper';
 
 interface QueryProviderProps {
   children: ReactNode;
@@ -20,7 +21,9 @@ export default function Providers({
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      <Provider store={storeRef.current}>{children}</Provider>
+      <Provider store={storeRef.current}>
+        <LocalStorageWrapper>{children}</LocalStorageWrapper>
+      </Provider>
     </QueryClientProvider>
   );
 }
