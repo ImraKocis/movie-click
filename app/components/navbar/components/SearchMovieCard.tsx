@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import {
-  imageBaseUrl,
   ImageUrlBuilder,
   posterSizes,
 } from '@/app/lib/tmdb/utils/images/imagesConfiguration';
@@ -23,7 +22,7 @@ export default function SearchMovieCard({
   id,
   setIsSearchActive,
 }: SearchMovieCardProps) {
-  const url = new ImageUrlBuilder(imageBaseUrl)
+  const url = new ImageUrlBuilder()
     .setSizeConfig(posterSizes)
     .setImageSize('small')
     .setImageUrl(posterUrl)

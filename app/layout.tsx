@@ -4,6 +4,7 @@ import './globals.css';
 import React from 'react';
 import Navbar from '@/app/components/navbar/Navbar';
 import Providers from '@/app/util/Providers';
+import { twMerge } from 'tailwind-merge';
 
 const lato = Lato({ weight: ['300', '400', '700', '900'], subsets: ['latin'] });
 
@@ -19,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={lato.className}>
+      <body className={twMerge(lato.className, 'bg-gray-900')}>
         <Providers>
           <Navbar />
           {children}
