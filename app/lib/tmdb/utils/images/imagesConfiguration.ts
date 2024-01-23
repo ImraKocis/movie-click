@@ -28,17 +28,13 @@ export const logoSizes: ImagesSizesProps = {
 
 type ImageSizeType = 'small' | 'medium' | 'large' | 'original';
 
-export const imageBaseUrl: string = 'https://image.tmdb.org/t/p';
+const imageBaseUrl: string = 'https://image.tmdb.org/t/p';
 
 export class ImageUrlBuilder {
-  private readonly baseUrl: string;
+  protected readonly baseUrl: string = imageBaseUrl;
   private sizeConfig!: ImagesSizesProps;
   private imageSize!: ImageSizeType;
   private imageUrl!: string;
-
-  constructor(baseUrl: string) {
-    this.baseUrl = baseUrl;
-  }
 
   public setSizeConfig(sizeConfig: ImagesSizesProps): this {
     this.sizeConfig = sizeConfig;
@@ -55,11 +51,8 @@ export class ImageUrlBuilder {
     return this;
   }
 
-  private getSize(
-    config: ImagesSizesProps,
-    size: ImageSizeType
-  ): string | undefined {
-    return config[size];
+  private getSize(config: ImagesSizesProps, size: ImageSizeType): string {
+    return config[size]!;
   }
 
   public build(): string {

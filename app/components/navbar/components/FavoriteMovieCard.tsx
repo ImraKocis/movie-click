@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Paragraph from '@/app/components/typography/Paragraph';
 import Link from 'next/link';
 import {
-  imageBaseUrl,
   ImageUrlBuilder,
   posterSizes,
 } from '@/app/lib/tmdb/utils/images/imagesConfiguration';
@@ -24,7 +23,7 @@ export default function FavoriteMovieCard({
   year,
   title,
 }: FavoriteMovieCardProps): ReactElement {
-  const url = new ImageUrlBuilder(imageBaseUrl)
+  const url = new ImageUrlBuilder()
     .setSizeConfig(posterSizes)
     .setImageSize('small')
     .setImageUrl(posterUrl)

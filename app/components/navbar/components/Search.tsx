@@ -1,9 +1,11 @@
 'use client';
 import React, { ReactElement, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { IoMdClose } from 'react-icons/io';
 import SearchResults from '@/app/components/navbar/components/SearchResults';
 import { useQuery } from '@tanstack/react-query';
 import { getSearchResults } from '@/app/actions/search/actions';
+import { twMerge } from 'tailwind-merge';
 
 export default function Search(): ReactElement {
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
@@ -31,6 +33,14 @@ export default function Search(): ReactElement {
             onClick={() => setIsSearchActive(true)}
             onChange={(e) => handleSearch(e.target.value)}
           />
+        </div>
+        <div
+          onClick={() => setIsSearchActive(false)}
+          className={twMerge(
+            isSearchActive ? 'ml-auto block text-white' : 'hidden'
+          )}
+        >
+          <IoMdClose />
         </div>
       </div>
       <div className="max-md:hidden max-md:group-hover/search:block">

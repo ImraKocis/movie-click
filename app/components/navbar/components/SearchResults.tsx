@@ -13,10 +13,7 @@ export default function SearchResults({
   setIsSearchActive,
 }: SearchResultsProps): ReactElement {
   return (
-    <div
-      onMouseLeave={() => setIsSearchActive(false)}
-      className="absolute left-0 right-0 w-full rounded-b bg-gray-800"
-    >
+    <div className="absolute left-0 right-0 z-[99] w-full rounded-b bg-gray-800">
       <div className="px-6 py-5">
         {!movies ? (
           <div className="flex text-gray-400">

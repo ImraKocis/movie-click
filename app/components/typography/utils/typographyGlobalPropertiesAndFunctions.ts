@@ -9,15 +9,15 @@ export const typographyColorsToTailwindClass = (
 ): string => {
   switch (color) {
     case 'black':
-      return 'text-black';
+      return 'text-slate-950';
     case 'gray':
       return 'text-gray-400';
     case 'white':
-      return 'text-white';
+      return 'text-slate-300';
     case 'yellow':
       return 'text-yellow-300';
     default:
-      return 'text-white';
+      return 'text-slate-300';
   }
 };
 

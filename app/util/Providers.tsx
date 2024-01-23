@@ -7,6 +7,7 @@ import { useRef } from 'react';
 import { Provider } from 'react-redux';
 import { makeStore, AppStore } from '@/app/lib/redux/store';
 import LocalStorageWrapper from '@/app/util/LocalStorageWrapper';
+import { NextUIProvider } from '@nextui-org/react';
 
 interface QueryProviderProps {
   children: ReactNode;
@@ -22,7 +23,9 @@ export default function Providers({
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <Provider store={storeRef.current}>
-        <LocalStorageWrapper>{children}</LocalStorageWrapper>
+        <NextUIProvider>
+          <LocalStorageWrapper>{children}</LocalStorageWrapper>
+        </NextUIProvider>
       </Provider>
     </QueryClientProvider>
   );
