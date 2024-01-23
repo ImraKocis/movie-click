@@ -6,11 +6,13 @@ export async function getPopularMovies({
   year = ['1900', new Date().getFullYear().toString()],
   genres = '',
   score = 1,
+  onlyBestMoves = false,
 }): Promise<MovieLists> {
   const url = process.env.API_BASE_URL;
   const token = process.env.API_TOKEN;
   const date = new Date();
   const today = `${date.getFullYear()}-${date.getMonth().toString().length == 1 ? '0' + (date.getMonth() + 1).toString() : date.getMonth() + 1}-${date.getDate()}`;
+  const voteCount = onlyBestMoves ? '1000' : '300';
   const response = await fetch(
     `${url}/discover/movie?` +
       new URLSearchParams({
@@ -19,8 +21,8 @@ export async function getPopularMovies({
           year[1] == '2024' ? `${today}` : `${year[1]}-12-31`,
         'vote_average.gte': score.toString(),
         'vote_average.lte': '10',
-        'vote_count.gte': '1000',
-        with_genres: genres,
+        'vote_count.gte': year[0] == '2024' ? '10' : voteCount,
+        with_genres: genres.replaceAll(',', '|'),
         include_adult: 'false',
         sort_by: 'popularity.desc',
         language: 'en-US',
@@ -40,7 +42,7 @@ export async function getNewestMovies(): Promise<MovieLists> {
   const url = process.env.API_BASE_URL;
   const token = process.env.API_TOKEN;
   const response = await fetch(
-    `${url}/movie/popular?` +
+    `${url}/movie/now_playing?` +
       new URLSearchParams({
         language: 'en-US',
         page: '1',

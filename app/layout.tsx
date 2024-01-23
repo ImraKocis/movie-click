@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={twMerge(lato.className, 'bg-gray-900')}>
+      <body className={twMerge(lato.className, 'min-h-screen bg-gray-900')}>
         <Providers>
           <Navbar />
           {children}

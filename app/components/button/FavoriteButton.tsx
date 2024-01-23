@@ -29,7 +29,7 @@ export default function FavoriteButton({
   const favoriteMovies = useSelector(selectLocalStorage);
   useEffect(() => {
     checkIfMovieIsFavorite(movie.id);
-  }, [isButtonPressed, movie]);
+  }, [isButtonPressed, movie, favoriteMovies]);
 
   const checkIfMovieIsFavorite = (movieId: number) => {
     if (favoriteMovies?.some((movie) => movie.id == movieId.toString())) {

@@ -4,7 +4,7 @@ import React, { ReactElement, ReactNode, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useRef } from 'react';
-import { Provider } from 'react-redux';
+import { Provider as ReduxProvider } from 'react-redux';
 import { makeStore, AppStore } from '@/app/lib/redux/store';
 import LocalStorageWrapper from '@/app/util/LocalStorageWrapper';
 import { NextUIProvider } from '@nextui-org/react';
@@ -22,11 +22,11 @@ export default function Providers({
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      <Provider store={storeRef.current}>
+      <ReduxProvider store={storeRef.current}>
         <NextUIProvider>
           <LocalStorageWrapper>{children}</LocalStorageWrapper>
         </NextUIProvider>
-      </Provider>
+      </ReduxProvider>
     </QueryClientProvider>
   );
 }
