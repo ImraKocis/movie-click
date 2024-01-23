@@ -1914,6 +1914,11 @@
   dependencies:
     "@tanstack/query-devtools" "5.17.7"
 
+"@tanstack/react-query-next-experimental@^5.0.0":
+  version "5.17.19"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query-next-experimental/-/react-query-next-experimental-5.17.19.tgz#53049c46bc795c3a54e38fbffdfbb1771eba96b4"
+  integrity sha512-JLZWhpVtpUccOZvrWvMeK3fe0Atq6kGNDO6RmhXPfyZ3tzCFfVKhu1ws3fP99HUnLX651uMxeNiz9eBqKqL1OQ==
+
 "@tanstack/react-query@^5.0.0":
   version "5.17.15"
   resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.17.15.tgz#2214491b97d77613155a3607a3af163ecde613b6"

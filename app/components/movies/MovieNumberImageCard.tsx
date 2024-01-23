@@ -1,26 +1,29 @@
 import { ReactElement } from 'react';
+import Image from 'next/image';
 import {
   ImageUrlBuilder,
   posterSizes,
 } from '@/app/lib/tmdb/utils/images/imagesConfiguration';
 import Link from 'next/link';
-import Image from 'next/image';
 import FavoriteButton from '@/app/components/button/FavoriteButton';
 
-export interface MovieImageCardProps {
+export interface MovieNumberImageCardProps {
   id: number;
+  movieNumber: number;
   movieImageUrl: string;
   movieTitle: string;
   movieScore: number;
   movieReleaseDate: string;
 }
-export default function MovieImageCard({
+
+export default function MovieNumberImageCard({
   id,
   movieImageUrl,
+  movieNumber,
   movieTitle,
   movieReleaseDate,
   movieScore,
-}: MovieImageCardProps): ReactElement {
+}: MovieNumberImageCardProps): ReactElement {
   const imageUrl = new ImageUrlBuilder()
     .setSizeConfig(posterSizes)
     .setImageUrl(movieImageUrl)
@@ -30,20 +33,23 @@ export default function MovieImageCard({
     <div className="relative">
       <Link
         href={{ pathname: `/movies/${movieTitle}`, query: { movieId: id } }}
-        className="relative flex min-h-[270px] min-w-[208px] items-end bg-transparent px-4 max-xl:snap-start"
+        className="relative flex min-h-[300px] min-w-[270px] items-end bg-transparent px-4 max-xl:snap-start"
       >
-        <div className="flex h-fit min-w-52 overflow-hidden">
+        <p className="flex text-[180px] font-bold leading-[100%] tracking-[-20px] text-gray-400">
+          {movieNumber}
+        </p>
+        <div className="flex h-full w-52">
           <Image
             src={imageUrl}
             alt={`${movieTitle} poster`}
-            width={208}
+            width={210}
             height={270}
             className="rounded"
-            style={{ objectFit: 'cover', width: 'auto', height: 'auto' }}
+            style={{ objectFit: 'cover' }}
           />
         </div>
       </Link>
-      <div className="absolute bottom-0 right-1 z-50 p-4">
+      <div className="absolute bottom-0 right-2 z-50 p-4">
         <FavoriteButton
           movie={{
             id: id,

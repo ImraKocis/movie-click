@@ -15,6 +15,7 @@ export interface MoviesFilterProps {
   setUiScore: React.Dispatch<React.SetStateAction<number>>;
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
   genre: number[];
+  year: number[];
   uiYear: number[];
   uiScore: number;
 }
@@ -29,6 +30,7 @@ export default function MoviesFilter({
   uiScore,
   uiYear,
   genre,
+  year,
 }: MoviesFilterProps): ReactElement {
   const { data, error } = useQuery({
     queryKey: ['genres'],
@@ -37,7 +39,7 @@ export default function MoviesFilter({
 
   if (error) console.log(error.message);
   return (
-    <div className="absolute top-10 rounded bg-gray-800 p-6">
+    <div className="absolute top-10 z-[99] rounded bg-gray-800 p-6">
       <div
         className="mb-4 flex items-center justify-between text-gray-400"
         onClick={() => setIsActive(false)}
@@ -61,10 +63,10 @@ export default function MoviesFilter({
             onChangeEnd={(value) =>
               typeof value == 'number' ? setScore(value) : null
             }
-            className="w-80 text-web-paragraph text-gray-400"
+            className="w-full text-web-paragraph text-gray-400 lg:w-80"
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 flex flex-col">
           <Slider
             label="Year"
             step={1}
@@ -83,8 +85,45 @@ export default function MoviesFilter({
             onChangeEnd={(value) =>
               typeof value !== 'number' ? setYear(value) : null
             }
-            className="mt-4 w-80 text-web-paragraph text-gray-400"
+            className="mt-4 w-full text-web-paragraph text-gray-400 lg:w-80"
           />
+          <div className="mt-4 flex justify-end gap-4">
+            <CustomCheckbox
+              isSelected={
+                year[0] == new Date().getFullYear() &&
+                year[1] == new Date().getFullYear()
+              }
+              onValueChange={(value: boolean) => {
+                setYear(
+                  value
+                    ? [new Date().getFullYear(), new Date().getFullYear()]
+                    : [1900, new Date().getFullYear()]
+                );
+                setUiYear([1900, new Date().getFullYear()]);
+              }}
+            >
+              This year
+            </CustomCheckbox>
+            <CustomCheckbox
+              isSelected={
+                year[0] == new Date().getFullYear() - 1 &&
+                year[1] == new Date().getFullYear() - 1
+              }
+              onValueChange={(value: boolean) => {
+                setYear(
+                  value
+                    ? [
+                        new Date().getFullYear() - 1,
+                        new Date().getFullYear() - 1,
+                      ]
+                    : [1900, new Date().getFullYear()]
+                );
+                setUiYear([1900, new Date().getFullYear()]);
+              }}
+            >
+              Last year
+            </CustomCheckbox>
+          </div>
         </div>
         <div>
           <CheckboxGroup
