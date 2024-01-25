@@ -15,7 +15,7 @@ export interface FavoriteButtonProps {
 interface FavoriteButtonMovieProps {
   id: number;
   title: string;
-  year: string;
+  releaseDate: string;
   score: number;
   posterUrl: string;
 }
@@ -54,7 +54,7 @@ export default function FavoriteButton({
         addItem({
           id: movie.id.toString(),
           title: movie.title,
-          year: movie.year,
+          year: movie.releaseDate,
           score: movie.score.toString(),
           posterUrl: movie.posterUrl,
         })

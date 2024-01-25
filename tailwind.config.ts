@@ -12,7 +12,9 @@ const config: Config = {
     extend: {
       maxWidth: {
         'wrapper--desktop': '1750px',
+        'wrapper--desktop-half': '875px',
         'navbar--desktop': '900px',
+        'movie-detail-card': '1170px',
       },
       fontWeight: {
         light: '300',

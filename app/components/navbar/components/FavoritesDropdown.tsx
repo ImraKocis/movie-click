@@ -39,7 +39,7 @@ export default function FavoritesDropdown({
             />
           </button>
         </div>
-        {favoriteMovies.length > 0 ? (
+        {favoriteMovies?.length > 0 ? (
           <FavoriteMovieGrid movies={favoriteMovies} />
         ) : (
           <div className="mt-4">

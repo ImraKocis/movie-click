@@ -8,15 +8,6 @@ export interface LocalStorageSlice {
   localStorage: LocalStorageFavorites[];
 }
 
-// let moviesFromLocaleStorage;
-// let storedMoviesInLocaleStorage;
-// if () {
-//   moviesFromLocaleStorage = localStorage.getItem('favoriteMoviesIds');
-// }
-// storedMoviesInLocaleStorage = moviesFromLocaleStorage
-//   ? JSON.parse(moviesFromLocaleStorage)
-//   : [];
-
 const initialState: LocalStorageSlice = {
   localStorage: [],
 };
@@ -27,7 +18,6 @@ export const localStorageSlice = createSlice({
   reducers: {
     set: (state, action: PayloadAction<LocalStorageFavorites[]>) => {
       state.localStorage = action.payload;
-      // localStorage.setItem('favoriteMoviesIds', JSON.stringify(action.payload));
     },
     addItem: (state, action: PayloadAction<LocalStorageFavorites>) => {
       state.localStorage.push(action.payload);

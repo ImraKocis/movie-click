@@ -1,9 +1,9 @@
 import React from 'react';
 import MovieNumberImageCard from '@/app/components/movies/MovieNumberImageCard';
-import MovieSlider from '@/app/components/movies/MovieSlider';
+import MovieSlider from '@/app/components/movies/containers/MovieSlider';
 import {
   getNewestMovies,
-  getPopularMovies,
+  getMoviesWithParams,
 } from '@/app/actions/movies/actions';
 import MovieImageCard from '@/app/components/movies/MovieImageCard';
 import Paragraph from '@/app/components/typography/Paragraph';
@@ -11,30 +11,30 @@ import MovieSliderGridContainer from '@/app/components/movies/containers/MovieSl
 import LinkButton from '@/app/components/button/LinkButton';
 
 export default async function MoviesPage() {
-  const popularMovies = await getPopularMovies({
+  const popularMovies = await getMoviesWithParams({
     pageParam: 1,
     onlyBestMoves: true,
   });
   const newMovies = await getNewestMovies();
-  const actionMovies = await getPopularMovies({
+  const actionMovies = await getMoviesWithParams({
     genres: '28',
     onlyBestMoves: true,
   });
-  const horrorMovies = await getPopularMovies({
+  const horrorMovies = await getMoviesWithParams({
     genres: '27',
     onlyBestMoves: true,
   });
-  const comedyMovies = await getPopularMovies({
+  const comedyMovies = await getMoviesWithParams({
     genres: '35',
     onlyBestMoves: true,
   });
-  const crimeMovies = await getPopularMovies({
+  const crimeMovies = await getMoviesWithParams({
     genres: '80',
     onlyBestMoves: true,
   });
   return (
     <div className="relative flex flex-col items-center bg-transparent">
-      <div className="relative flex w-full max-w-wrapper--desktop flex-col gap-10 px-4">
+      <div className="relative mt-56 flex w-full max-w-wrapper--desktop flex-col gap-10 px-4 xl:mt-32">
         <MovieSliderGridContainer headingText="Top 10 in Croatia">
           <MovieSlider>
             {popularMovies.results.splice(0, 10).map((movie, index) => (

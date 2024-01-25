@@ -13,6 +13,7 @@ export interface MovieImageCardProps {
   movieTitle: string;
   movieScore: number;
   movieReleaseDate: string;
+  activateFavoriteButton?: boolean;
 }
 export default function MovieImageCard({
   id,
@@ -20,6 +21,7 @@ export default function MovieImageCard({
   movieTitle,
   movieReleaseDate,
   movieScore,
+  activateFavoriteButton = true,
 }: MovieImageCardProps): ReactElement {
   const imageUrl = new ImageUrlBuilder()
     .setSizeConfig(posterSizes)
@@ -43,17 +45,19 @@ export default function MovieImageCard({
           />
         </div>
       </Link>
-      <div className="absolute bottom-0 right-1 z-50 p-4">
-        <FavoriteButton
-          movie={{
-            id: id,
-            year: movieReleaseDate,
-            score: movieScore,
-            posterUrl: imageUrl,
-            title: movieTitle,
-          }}
-        />
-      </div>
+      {activateFavoriteButton ? (
+        <div className="absolute bottom-0 right-1 z-50 p-4">
+          <FavoriteButton
+            movie={{
+              id: id,
+              releaseDate: movieReleaseDate,
+              score: movieScore,
+              posterUrl: imageUrl,
+              title: movieTitle,
+            }}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }

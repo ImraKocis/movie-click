@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import './styles/movieImageCardSlider.css';
+import '../styles/movieImageCardSlider.css';
 import { useWindowWidth } from '@/app/hooks/useWindowWidth';
 
 export default function MovieSlider({
@@ -52,7 +52,7 @@ export default function MovieSlider({
 
   return (
     <div className="w-full px-2 py-4">
-      <div className="scrollbar-hide group/carousel relative flex overflow-x-auto 2xl:overflow-hidden">
+      <div className="group/carousel relative flex overflow-x-auto scrollbar-hide 2xl:overflow-hidden">
         <button
           onClick={handlePrevious}
           disabled={isDisabled('prev')}
@@ -62,7 +62,7 @@ export default function MovieSlider({
         </button>
         <div
           ref={slider}
-          className="scrollbar-hide flex snap-x snap-mandatory overflow-x-auto scroll-smooth 2xl:overflow-hidden"
+          className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth scrollbar-hide 2xl:overflow-hidden"
         >
           {children}
         </div>

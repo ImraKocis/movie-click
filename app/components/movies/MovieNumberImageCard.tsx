@@ -53,7 +53,7 @@ export default function MovieNumberImageCard({
         <FavoriteButton
           movie={{
             id: id,
-            year: movieReleaseDate,
+            releaseDate: movieReleaseDate,
             score: movieScore,
             posterUrl: imageUrl,
             title: movieTitle,

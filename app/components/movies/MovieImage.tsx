@@ -1,3 +1,4 @@
+'use client';
 import { ReactElement, useEffect, useState } from 'react';
 import Link from 'next/link';
 import NextImage from 'next/image';
@@ -57,7 +58,7 @@ export default function MovieImage({
           <FavoriteButton
             movie={{
               id: id,
-              year: year,
+              releaseDate: year,
               score: score,
               posterUrl: imageUrl,
               title: title,
