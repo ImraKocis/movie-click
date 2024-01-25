@@ -1,6 +1,6 @@
 'use client';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { getPopularMovies } from '@/app/actions/movies/actions';
+import { getMoviesWithParams } from '@/app/actions/movies/actions';
 import { useInView } from 'react-intersection-observer';
 import React, { ReactElement, useEffect, useState } from 'react';
 import MovieImage from '@/app/components/movies/MovieImage';
@@ -10,6 +10,7 @@ import { IoIosArrowDown } from 'react-icons/io';
 import { twMerge } from 'tailwind-merge';
 import { Spinner } from '@nextui-org/spinner';
 import Button from '@/app/components/button/Button';
+import { notFound } from 'next/navigation';
 
 export default function MoviesInfiniteScroll(): ReactElement {
   const [year, setYear] = useState<number[]>([1900, new Date().getFullYear()]);
@@ -26,7 +27,7 @@ export default function MoviesInfiniteScroll(): ReactElement {
     useInfiniteQuery({
       queryKey: ['favoriteMovies', year, score, genre],
       queryFn: async ({ pageParam }) =>
-        getPopularMovies({
+        getMoviesWithParams({
           pageParam,
           year: year.map((y) => y.toString()),
           genres: genre.toString(),
@@ -38,32 +39,13 @@ export default function MoviesInfiniteScroll(): ReactElement {
         return undefined;
       },
     });
-
-  if (error) console.log(error.message);
-
-  // const handleFilters = () => {
-  //   setFilteredData(flattenData?.filter(filterMovies));
-  // };
-  //
-  // const filterMovies = (movie: MovieListsResultsProps): boolean => {
-  //   if (genre.length == 0) {
-  //     return (
-  //       new Date(movie.release_date.slice(0, 4)).getTime() >
-  //         new Date(year[0].toString()).getTime() &&
-  //       new Date(movie.release_date.slice(0, 4)).getTime() <
-  //         new Date(year[1].toString()).getTime() &&
-  //       movie.vote_average >= score
-  //     );
-  //   }
-  //   return (
-  //     new Date(movie.release_date.slice(0, 4)).getTime() >
-  //       new Date(year[0].toString()).getTime() &&
-  //     new Date(movie.release_date.slice(0, 4)).getTime() <
-  //       new Date(year[1].toString()).getTime() &&
-  //     movie.genre_ids.some((g) => genre.includes(g)) &&
-  //     movie.vote_average >= score
-  //   );
-  // };
+  if (error) {
+    console.log(
+      'Error while api request in MoviesInfiniteScroll component',
+      error.message
+    );
+    notFound();
+  }
 
   const scrollToTop = () => {
     if (typeof window !== 'undefined') window.scrollTo(0, 0);

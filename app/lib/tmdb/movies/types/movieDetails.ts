@@ -12,6 +12,7 @@ export interface MovieDetails {
   vote_average: number;
   vote_count: number;
   videos: VideoResults;
+  production_countries: ProductionCountries[];
 }
 interface ProductionCompanies {
   id: number;
@@ -31,6 +32,11 @@ interface Video {
 
 interface VideoResults {
   results: Video[];
+}
+
+interface ProductionCountries {
+  iso_3166_1: string;
+  name: string;
 }
 
 type VideoType = 'Trailer' | 'Behind the Scenes';

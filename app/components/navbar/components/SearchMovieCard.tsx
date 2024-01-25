@@ -34,7 +34,7 @@ export default function SearchMovieCard({
       href={{ pathname: `/movies/${title}`, query: { movieId: id } }}
       className="flex gap-4 rounded-md bg-transparent hover:bg-gray-600"
     >
-      <div className="flex h-20 w-14 items-center justify-center">
+      <div className="flex h-full min-w-14 items-center justify-center">
         <Image
           src={url}
           className="h-auto w-auto rounded"

@@ -14,4 +14,7 @@ export interface MovieListsResultsProps {
   release_date: string;
   title: string;
   vote_average: number;
+  backdrop_path: string;
+  vote_count: number;
+  overview: string;
 }

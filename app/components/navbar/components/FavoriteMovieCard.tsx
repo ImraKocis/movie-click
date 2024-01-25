@@ -65,7 +65,7 @@ export default function FavoriteMovieCard({
             id: id,
             title: title,
             posterUrl: posterUrl,
-            year: year,
+            releaseDate: year,
             score: score,
           }}
         />

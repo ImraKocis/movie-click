@@ -1,8 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MovieClick
+
+Training application with inspiration of [JustWatch](https://www.justwatch.com).
+Application is developed with [Next.Js](https://nextjs.org) and [React](https://react.com).
 
 ## Getting Started
 
-First, run the development server:
+### API
+
+Application is using [TMDB API](https://developer.themoviedb.org/docs/getting-started). You will need to create account and login to get access to credentials.
+
+Provide following variables in .env
+```dotenv
+API_TOKEN="xxx"
+API_KEY="xxx"
+API_BASE_URL="https://api.themoviedb.org/3/"
+```
+
+## Development run
+Run the development server:
 
 ```bash
 npm run dev
@@ -16,21 +31,19 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production build
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Install Docker
 
-## Learn More
+First step is to install [Docker](https://www.docker.com/) on your pc. Follow official documentation for your OS.
 
-To learn more about Next.js, take a look at the following resources:
+After successful installation you will need to run Docker on your pc.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# production build
+docker compose build frontend
+# after successful build, run local production build
+docker compose up frontend
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Open [http://localhost:3000](http://localhost:3000) with browser.

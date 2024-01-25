@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { twMerge } from 'tailwind-merge';
 import {
   TypographyColors,
   HeadingLevel,
@@ -27,11 +26,7 @@ export default function Heading({
     case 'h1': {
       return (
         <h1
-          className={twMerge(
-            'text-mobile-title-1 md:text-web-title-1',
-            fontStyleToTailwindClass(style),
-            typographyColorsToTailwindClass(color)
-          )}
+          className={`text-mobile-title-1 md:text-web-title-1 ${fontStyleToTailwindClass(style)} ${typographyColorsToTailwindClass(color)}`}
         >
           {isAllCapital ? text.toUpperCase() : text}
         </h1>
@@ -40,11 +35,7 @@ export default function Heading({
     case 'h2': {
       return (
         <h2
-          className={twMerge(
-            'text-mobile-title-2 md:text-web-title-2',
-            fontStyleToTailwindClass(style),
-            typographyColorsToTailwindClass(color)
-          )}
+          className={`text-mobile-title-2 md:text-web-title-2 ${fontStyleToTailwindClass(style)} ${typographyColorsToTailwindClass(color)}`}
         >
           {isAllCapital ? text.toUpperCase() : text}
         </h2>
@@ -53,11 +44,7 @@ export default function Heading({
     case 'h3': {
       return (
         <h3
-          className={twMerge(
-            'text-mobile-title-3 md:text-web-title-3',
-            fontStyleToTailwindClass(style),
-            typographyColorsToTailwindClass(color)
-          )}
+          className={`text-mobile-title-3 md:text-web-title-3 ${fontStyleToTailwindClass(style)} ${typographyColorsToTailwindClass(color)}`}
         >
           {isAllCapital ? text.toUpperCase() : text}
         </h3>
