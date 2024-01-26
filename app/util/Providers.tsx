@@ -21,7 +21,7 @@ export default function Providers({
   if (!storeRef.current) storeRef.current = makeStore();
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/*<ReactQueryDevtools initialIsOpen={false} />*/}
       <ReduxProvider store={storeRef.current}>
         <NextUIProvider>
           <LocalStorageWrapper>{children}</LocalStorageWrapper>

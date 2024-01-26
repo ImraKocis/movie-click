@@ -41,7 +41,7 @@ export default function MovieSimpleDetails({
           <Paragraph text="genres" color="gray" isAllCapital />
           <Paragraph
             text={movie.genres
-              .map((genre, index) => {
+              ?.map((genre, index) => {
                 if (index == 0) return genre.name;
                 return ` ${genre.name}`;
               })
@@ -54,7 +54,7 @@ export default function MovieSimpleDetails({
         <div className="mt-6">
           <Paragraph
             text={
-              movie.production_countries.length > 1
+              movie.production_countries?.length > 1
                 ? 'production countries'
                 : 'production county'
             }
@@ -63,7 +63,7 @@ export default function MovieSimpleDetails({
           />
           <Paragraph
             text={movie.production_countries
-              .map((country, index) => {
+              ?.map((country, index) => {
                 if (index == 0) return country.name;
                 return ` ${country.name}`;
               })

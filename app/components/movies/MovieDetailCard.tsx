@@ -32,7 +32,7 @@ export default function MovieDetailCard({
     .setSizeConfig(posterSizes)
     .build();
   return (
-    <div className="max-w-movie-detail-card mx-auto flex w-full flex-col-reverse rounded-xl bg-gray-900 p-6 lg:flex-row">
+    <div className="mx-auto flex w-full max-w-movie-detail-card flex-col-reverse rounded-xl bg-gray-900 p-6 lg:flex-row">
       <div className="flex w-full flex-col gap-6 divide-y-2 divide-gray-400 px-2 max-lg:items-center lg:basis-1/3">
         <div className="relative max-w-[360px]">
           <Image
@@ -77,7 +77,7 @@ export default function MovieDetailCard({
           <div className="mb-12 flex flex-col gap-6">
             <Paragraph
               text={
-                movie.production_companies.length > 1
+                movie.production_companies?.length > 1
                   ? 'Production companies'
                   : 'Production company'
               }
@@ -86,8 +86,8 @@ export default function MovieDetailCard({
             />
             <div className="flex w-full items-center gap-4">
               {movie.production_companies
-                .filter((company) => company.logo_path !== null)
-                .map((company, index) => (
+                ?.filter((company) => company.logo_path !== null)
+                ?.map((company, index) => (
                   <React.Fragment key={index}>
                     <div className="flex h-full max-w-[108px]">
                       <Image
@@ -110,7 +110,7 @@ export default function MovieDetailCard({
             <Paragraph text={'similar'} isAllCapital color="gray" />
             <MovieSliderContainer>
               <MovieSlider>
-                {similar.results.map((movie) => (
+                {similar.results?.map((movie) => (
                   <React.Fragment key={movie.id}>
                     <MovieImageCard
                       id={movie.id}
