@@ -30,7 +30,7 @@ export default function BackgroundImageContainer({
     <div className="relative flex flex-col">
       <div className="absolute top-0 w-full">
         <div
-          className={`${fulSizeImage ? 'h-screen' : 'h-[600px]'} max-w-full`}
+          className={`relative ${fulSizeImage ? 'h-screen' : 'h-[600px]'} max-w-full`}
         >
           <Image
             src={imageFullUrl ? imageFullUrl : coverImage}

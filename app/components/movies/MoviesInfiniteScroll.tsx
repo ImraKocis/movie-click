@@ -40,11 +40,7 @@ export default function MoviesInfiniteScroll(): ReactElement {
       },
     });
   if (error) {
-    console.log(
-      'Error while api request in MoviesInfiniteScroll component',
-      error.message
-    );
-    notFound();
+    throw new Error('Error in infinite scroll api call');
   }
 
   const scrollToTop = () => {

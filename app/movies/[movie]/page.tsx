@@ -5,6 +5,8 @@ import {
 } from '@/app/actions/movies/actions';
 import MovieDetailCard from '@/app/components/movies/MovieDetailCard';
 import YouTubeVideo from '@/app/components/movies/YouTubeVideo';
+import { Suspense } from 'react';
+import Loading from '@/app/loading';
 
 interface SearchParams {
   searchParams: {
@@ -19,13 +21,15 @@ export default async function MovieDetailsPage({ searchParams }: SearchParams) {
     (video) => video.type === 'Trailer'
   )[0].key;
   return (
-    <BackgroundImageContainer
-      backgroundImage={movie.backdrop_path}
-      blurImage={false}
-      fulSizeImage={false}
-    >
-      <YouTubeVideo trailerKey={trailerKey} />
-      <MovieDetailCard movie={movie} similar={similar} />
-    </BackgroundImageContainer>
+    <Suspense fallback={<Loading />}>
+      <BackgroundImageContainer
+        backgroundImage={movie.backdrop_path}
+        blurImage={false}
+        fulSizeImage={false}
+      >
+        <YouTubeVideo trailerKey={trailerKey} />
+        <MovieDetailCard movie={movie} similar={similar} />
+      </BackgroundImageContainer>
+    </Suspense>
   );
 }

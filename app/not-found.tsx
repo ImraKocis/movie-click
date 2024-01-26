@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
-import Error from './components/error/components/Error';
+import NotFoundError from '@/app/components/error/components/NotFoundError';
+
 export default function NotFound(): ReactElement {
-  return <Error />;
+  return <NotFoundError />;
 }

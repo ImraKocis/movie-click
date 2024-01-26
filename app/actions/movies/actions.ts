@@ -47,6 +47,10 @@ export async function getMoviesWithParams({
       },
     }
   );
+  if (!response.ok) {
+    console.log('Response if error', await response.json());
+    throw new Error('getMoviesWithParams api call error');
+  }
   return await response.json();
 }
 
@@ -63,7 +67,10 @@ export async function getNewestMovies(): Promise<MovieLists> {
       headers: { accept: 'application/json', Authorization: `Bearer ${token}` },
     }
   );
-
+  if (!response.ok) {
+    console.log('Response if error', await response.json());
+    throw new Error('getNewestMovies api call error');
+  }
   return await response.json();
 }
 
@@ -81,7 +88,10 @@ export async function getUpcomingMovies(): Promise<MovieLists> {
       headers: { accept: 'application/json', Authorization: `Bearer ${token}` },
     }
   );
-
+  if (!response.ok) {
+    console.log('Response if error', await response.json());
+    throw new Error('getUpcomingMovies api call error');
+  }
   return await response.json();
 }
 
@@ -99,7 +109,10 @@ export async function getPopularMovies(): Promise<MovieLists> {
       headers: { accept: 'application/json', Authorization: `Bearer ${token}` },
     }
   );
-
+  if (!response.ok) {
+    console.log('Response if error', await response.json());
+    throw new Error('getPopularMovies api call error');
+  }
   return await response.json();
 }
 
@@ -118,7 +131,10 @@ export async function getMovieDetails(movieId = 0): Promise<MovieDetails> {
       headers: { accept: 'application/json', Authorization: `Bearer ${token}` },
     }
   );
-
+  if (!response.ok) {
+    console.log('Response if error', await response.json());
+    throw new Error('getMovieDetails api call error');
+  }
   return await response.json();
 }
 
@@ -137,6 +153,9 @@ export async function getMovieSimilarMovies(movieId = 0): Promise<MovieLists> {
       headers: { accept: 'application/json', Authorization: `Bearer ${token}` },
     }
   );
-
+  if (!response.ok) {
+    console.log('Response if error', await response.json());
+    throw new Error('getMovieSimilarMovies api call error');
+  }
   return await response.json();
 }
