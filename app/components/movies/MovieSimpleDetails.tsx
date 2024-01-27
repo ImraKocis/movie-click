@@ -56,7 +56,7 @@ export default function MovieSimpleDetails({
             text={
               movie.production_countries?.length > 1
                 ? 'production countries'
-                : 'production county'
+                : 'production country'
             }
             color="gray"
             isAllCapital

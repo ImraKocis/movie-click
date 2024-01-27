@@ -10,7 +10,6 @@ import { IoIosArrowDown } from 'react-icons/io';
 import { twMerge } from 'tailwind-merge';
 import { Spinner } from '@nextui-org/spinner';
 import Button from '@/app/components/button/Button';
-import { notFound } from 'next/navigation';
 
 export default function MoviesInfiniteScroll(): ReactElement {
   const [year, setYear] = useState<number[]>([1900, new Date().getFullYear()]);
@@ -23,7 +22,7 @@ export default function MoviesInfiniteScroll(): ReactElement {
   const [uiScore, setUiScore] = useState<number>(1);
   const [isFilterActive, setIsFilterActive] = useState<boolean>(false);
   const { ref, inView } = useInView();
-  const { data, error, fetchNextPage, isFetching, hasNextPage } =
+  const { data, error, fetchNextPage, isFetching, hasNextPage, isFetched } =
     useInfiniteQuery({
       queryKey: ['favoriteMovies', year, score, genre],
       queryFn: async ({ pageParam }) =>
@@ -92,13 +91,21 @@ export default function MoviesInfiniteScroll(): ReactElement {
           ) : null}
         </div>
       </div>
+      {isFetched && flattenedData.length == 0 ? (
+        <div className="flex h-96 w-full items-center justify-center">
+          <Paragraph
+            text="There is not such results, try to change filters to see more results"
+            color="gray"
+          />
+        </div>
+      ) : null}
       {isFetching && flattenedData.length == 0 ? (
         <div className="flex h-96 w-full items-center justify-center">
           <Spinner />
         </div>
       ) : (
         <div className="grid grid-cols-2 justify-items-center gap-3 bg-transparent sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
-          {flattenedData.map((movie, index) => {
+          {flattenedData?.map((movie, index) => {
             if (flattenedData.length - 1 == index)
               return (
                 <div ref={ref} key={index}>
@@ -138,7 +145,7 @@ export default function MoviesInfiniteScroll(): ReactElement {
       {!hasNextPage && flattenedData.length > 0 ? (
         <div className="flex justify-center py-8 max-md:text-center">
           <Paragraph
-            text="You have reach to the end of results, try to change filters to more results"
+            text="You have reach to the end of results, try to change filters to see more results"
             color="gray"
           />
         </div>

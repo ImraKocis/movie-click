@@ -1,6 +1,7 @@
 'use client';
 import { ReactElement, useState } from 'react';
-import { BsPlayBtn } from 'react-icons/bs';
+import { IoIosPlay } from 'react-icons/io';
+
 interface YouTubeVideoProps {
   trailerKey: string;
 }
@@ -24,9 +25,9 @@ export default function YouTubeVideo({
             <div className="flex h-full w-full items-center justify-center">
               <button
                 onClick={() => setIsClicked(true)}
-                className="pointer-events-auto h-16 w-16 text-gray-400"
+                className="pointer-events-auto h-12 w-16 rounded bg-gray-800 p-2 text-yellow-400"
               >
-                <BsPlayBtn className="h-full w-full" />
+                <IoIosPlay className="h-full w-full" />
               </button>
             </div>
           )}

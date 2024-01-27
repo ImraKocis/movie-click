@@ -6,7 +6,6 @@ import { useQuery } from '@tanstack/react-query';
 import CustomCheckbox from '@/app/components/checkbox/CustomCheckbox';
 import { IoMdClose } from 'react-icons/io';
 import Paragraph from '@/app/components/typography/Paragraph';
-import { notFound } from 'next/navigation';
 
 export interface MoviesFilterProps {
   setYear: React.Dispatch<React.SetStateAction<number[]>>;
@@ -38,13 +37,9 @@ export default function MoviesFilter({
     queryFn: () => getMovieGenres(),
   });
 
-  if (error) {
-    console.log(
-      'Error with api request in MoviesFilter component: ',
-      error.message
-    );
-    notFound();
-  }
+  if (error)
+    throw new Error('Error with api request in MoviesFilter component');
+
   return (
     <div className="absolute top-10 z-[99] rounded bg-gray-800 p-6">
       <div

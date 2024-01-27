@@ -20,12 +20,7 @@ export default async function Home(): Promise<ReactElement> {
     onlyBestMoves: true,
     sortBy: 'vote_average.desc',
   });
-  if (
-    upcomingMovies.results?.length == 0 ||
-    popularMovies.results?.length == 0 ||
-    mustWatchMovies.results?.length == 0
-  )
-    throw new Error('Error in home page api call');
+
   return (
     <Suspense fallback={<Loading />}>
       <BackgroundImageContainer>

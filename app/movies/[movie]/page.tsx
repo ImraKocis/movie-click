@@ -17,7 +17,7 @@ interface SearchParams {
 export default async function MovieDetailsPage({ searchParams }: SearchParams) {
   const movie = await getMovieDetails(searchParams.movieId);
   const similar = await getMovieSimilarMovies(searchParams.movieId);
-  const trailerKey = movie.videos?.results.filter(
+  const trailerKey = movie.videos?.results?.filter(
     (video) => video.type === 'Trailer'
   )[0].key;
   return (
