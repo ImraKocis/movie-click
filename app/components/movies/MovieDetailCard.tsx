@@ -110,17 +110,19 @@ export default function MovieDetailCard({
             <Paragraph text={'similar'} isAllCapital color="gray" />
             <MovieSliderContainer>
               <MovieSlider>
-                {similar.results?.map((movie) => (
-                  <React.Fragment key={movie.id}>
-                    <MovieImageCard
-                      id={movie.id}
-                      movieImageUrl={movie.poster_path}
-                      movieTitle={movie.title}
-                      movieScore={movie.vote_average}
-                      movieReleaseDate={movie.release_date}
-                    />
-                  </React.Fragment>
-                ))}
+                {similar.results
+                  ?.filter((movie) => movie.poster_path !== null)
+                  ?.map((movie) => (
+                    <React.Fragment key={movie.id}>
+                      <MovieImageCard
+                        id={movie.id}
+                        movieImageUrl={movie.poster_path}
+                        movieTitle={movie.title}
+                        movieScore={movie.vote_average}
+                        movieReleaseDate={movie.release_date}
+                      />
+                    </React.Fragment>
+                  ))}
               </MovieSlider>
             </MovieSliderContainer>
           </div>

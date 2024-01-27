@@ -1,4 +1,3 @@
-'use client';
 import React, { ReactElement } from 'react';
 import Image from 'next/image';
 import Paragraph from '@/app/components/typography/Paragraph';
