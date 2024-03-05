@@ -16,7 +16,8 @@ export default function LocalStorageWrapper({
       const localStorageData: LocalStorageFavorites[] = JSON.parse(
         localStorage.getItem('favoriteMoviesIds')!
       );
-      dispatch(set(localStorageData));
+      if (localStorageData) dispatch(set(localStorageData));
+      else dispatch(set([]));
     }
   };
   useEffect(() => {
